@@ -1,0 +1,9 @@
+body,html {background-color: #ade8f4; font-family: "Trebuchet MS", sans-serif;
+           text-align: center; color: #03045e;}
+h1 {font-size: 10vw;}
+#button_1 {background-color: #023e8a; border-radius: 10px; font-size: 4vw;
+           color: #ade8f4; border-color: #ade8f4}
+#button_1:hover {background-color: #0096c7}
+#result,#factors {font-size: 2vw;}
+#number_1,#number_2 {resize: vertical; height: 50px;}
+input[type="number"] {font-size: 3vw;}

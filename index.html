@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Amicable Numbers</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Javascript Code -->
+    <script language="javascript">
+            window.onload = function() {
+                btn = document.getElementById("button_1");
+                btn.addEventListener("click", amicable);
+            }
+            // function: check if two numbers are amicable
+            function amicable() {
+                num1 = document.getElementById("number_1").value;
+                num2 = document.getElementById("number_2").value;
+                factors1 = new Array(num1);
+                factors2 = new Array(num2);
+                initialize(factors1);
+                initialize(factors2);
+                getFactors(num1,factors1);
+                getFactors(num2,factors2);
+                
+                if (amicableSum(num1,factors2) && amicableSum(num2,factors1)) {
+                    document.getElementById("result").innerHTML = "The numbers: " 
+                    + num1 + " and " + num2 + " are amicable";
+                }
+                else {
+                    document.getElementById("result").innerHTML = "The numbers: "
+                    + num1 + " and " + num2 + " are not amicable";
+                }
+                
+                document.getElementById("factors").innerHTML = 
+                "Factors of " + num1 + ": " + factors1 + "<br />" +
+                "Factors of " + num2 + ": " + factors2;
+            }
+            
+            // function: initialize all values to null
+            function initialize(arr) {
+                n = arr.length;
+                for (i = 0; i < n; i++) {
+                    arr[i] = null;
+                }
+            }
+            
+            // function: get all factors of x and put into array
+            function getFactors(x,arr) {
+                i = 0;
+                for (j = 0; j < x; j++) {
+                    if (isAFactor(j,x)) {
+                        arr[i] = j;
+                        i++;
+                    }
+                }
+            }
+            
+            // function: check if x is a factor of y
+            function isAFactor(x,y) {
+                if (y%x == 0) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            
+            // function: check if the sum of factors equals x
+            function amicableSum(x, factors) {
+                i = 0;
+                sum = 0;
+                while (factors[i] != null) {
+                    sum = sum + factors[i];
+                    i++;
+                }
+                if (sum == x) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+    </script>
+    <!-- End of Javascript -->
+</head>
+<body>
+    <!-- Header -->
+    <div id=header>
+        <h1>AMICABLE NUMBERS</h1>
+    </div> 
+    <!-- End of Header -->
+    
+    <!-- Main Section -->
+    <div id=main>
+        <form>
+            <input type="number" id="number_1" name="Number 1">
+            <input type="number" id="number_2" name="Number 2">
+            <br /><br /><br />
+            <input type="button" id="button_1" name="Button" value="Amicable?">
+        </form>
+        <br />
+        <br />
+        
+        <!-- Results -->
+        <div id="result">
+            &nbsp;
+        </div>
+        <!-- End of Results -->
+        
+        <br />
+        
+        <!-- Factors -->
+        <div id="factors">
+            &nbsp;
+        </div>
+        <!-- End of Factors -->
+    </div>
+    <!-- End of Main Section -->
+</body>
+</html>
